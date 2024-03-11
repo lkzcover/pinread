@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  postgres-pinread:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: pinread
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
