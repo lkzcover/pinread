@@ -21,7 +21,8 @@ func getRandomPin(ctx context.Context, db *pgxpool.Pool, tApi *tapi.Engine, msg 
 	}
 
 	rnd := rand.New(rand.NewSource(time.Now().Unix()))
-	pinN := rnd.Intn(len(pins) - 1)
+	pinN := rnd.Intn(len(pins))
+	pinN = pinN - 1
 
 	// TODO not good way @lkzcover
 	_, err = tApi.Reply(&tapi.Message{
